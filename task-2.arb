@@ -1,0 +1,35 @@
+require 'csv'
+#arrays to store email correcponding its states
+sent=[]
+delivered=[]
+bounced=[]
+opened=[]
+failed=[]
+
+CSV.foreach(("FakeData.csv")) do |row,rw|
+    if rw=="sent"
+      var1=row
+      sent.push(var1)
+    end
+    if rw=="delivered"
+      var2=row
+      delivered.push(var2)
+    end
+    if rw=="bounced"
+      var3=row
+      bounced.push(var3)
+    end
+    if rw=="opened"
+      var4=row
+      opened.push(var4)
+    end
+    if rw=="failed"
+      var5=row
+      failed.push(var5)
+    end
+end 
+File.write("sent.csv", sent)
+File.write("delivered.csv", delivered)
+File.write("bounced.csv", bounced)
+File.write("opened.csv", opened)
+File.write("failed.csv", failed)
